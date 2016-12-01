@@ -5,14 +5,14 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-
 // Second, define the singleton type provider function (callback).
 static QObject *manager_provider(QQmlEngine *engine, QJSEngine *scriptEngine);
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    Manager manager;
+    // Must be new in heap
+    Manager* manager = new Manager;
     qDebug("manager : %x\n", &manager);
 
     qmlRegisterSingletonType<Manager>("Ho0", 1, 0, "Manager", manager_provider);

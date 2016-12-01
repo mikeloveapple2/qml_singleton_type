@@ -22,6 +22,22 @@ Window {
         onClicked : {
             Qt.quit();
         }
+
+        Text {
+            id: txt
+            text: qsTr("Text")
+            color : "darkgreen"
+            width : 100
+            height : 100
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 22
+
+            anchors {
+                right : parent.right
+                bottom : parent.bottom
+            }
+        }
     }
 
     Component.onCompleted:  {
@@ -30,7 +46,7 @@ Window {
 
     Timer{
         id : timer
-        interval : 2000
+        interval : 1000
         running : true
         repeat : true
         onTriggered:  {
@@ -41,7 +57,7 @@ Window {
     Connections {
         target : Manager
         onNumberChanged : {
-            print("Number changed : " + Manager.number);
+            txt.text = Manager.number;
         }
     }
 
