@@ -1,0 +1,2 @@
+# qml_singleton_type
+use qmlRegisterSingletonType
